@@ -899,10 +899,10 @@ class ChoiceField(Field):
     def valid_value(self, value):
         """Check to see if the provided value is a valid choice."""
         text_value = str(value)
-        for k, v in self.choices:
+        for k, v in enumerate(self.choices):
             if isinstance(v, (list, tuple)):
                 # This is an optgroup, so look inside the group for options
-                for k2, v2 in v:
+                for k2, v2 in enumerate(v):
                     if value == k2 or text_value == str(k2):
                         return True
             else:
